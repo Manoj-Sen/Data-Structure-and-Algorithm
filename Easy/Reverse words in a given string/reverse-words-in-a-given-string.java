@@ -26,27 +26,13 @@ class Solution
     String reverseWords(String S)
     {
         // code here 
-        Stack<String> st = new Stack<>();
-        S += ".";
-        StringBuilder str = new StringBuilder();
-        for (int i = 0; i < S.length(); i++) {
-            char ch = S.charAt(i);
+        String[] str = S.split("\\.");
 
-            if (ch == '.') {
-                st.push(str.toString());
-                str = new StringBuilder();
-            } else {
-                str.append(ch);
-            }
+        String out = "";
+
+        for (int i = str.length - 1; i > 0; i--) {
+            out += str[i] + ".";
         }
-        StringBuilder ans = new StringBuilder();
-        while (st.size() != 1) {
-            ans.append(st.peek()).append(".");
-            st.pop();
-        }
-
-        ans.append(st.peek());
-
-        return ans.toString();
+        return out + str[0];
     }
 }
